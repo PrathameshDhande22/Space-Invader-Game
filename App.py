@@ -1,3 +1,3 @@
 from pdinvader import Game
 
-g=Game()
+g = Game()
