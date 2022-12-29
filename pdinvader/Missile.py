@@ -8,7 +8,7 @@ class Missile:
         self.ypos = y
         self.display = display
         self.img = img
-        self.velocity = 0.2
+        self.velocity = 0.25
         self.bulletcount = 0
         self.mrect = pygame.Rect(self.xpos, self.ypos, 30, 50)
 
