@@ -8,6 +8,8 @@ from .Bullet import Bullet
 from .Enemy import Enemy
 import random
 from .ExplosionEffect import Explosion
+import numpy
+from .Missile import Missile
 
 
 class Game():
@@ -42,11 +44,15 @@ class Game():
         self.enemyexplosion = Explosion(None, None, self.display)
         self.lastenemyxpos = 0
         self.lastenemyypos = 0
+
         self.gameoverscreen = False
         self.enemytobeexploded = False
         self.overscreen = False
         self.gamewinscreen = True
+        self.missileshow = False
         self.enemy = 0
+        self.counter = 0
+        self.missile = Missile(0, 0, self.display, self.imgs.missileimg)
         pygame.mixer.init()
         pygame.mixer.music.load(Images.MAINSOUND)
         pygame.mixer.music.play(-1)
@@ -77,6 +83,7 @@ class Game():
             else:
                 self.levels()
                 self.settinggameover()
+
                 self.clck.tick(self.fps)
                 pygame.mouse.set_visible(False)
                 self.screenplace(self.imgs.img1, 0, 0)
@@ -91,7 +98,17 @@ class Game():
                 self.levelupfont = self.imgs.levelfont.render(
                     f"Level : {str(self.level)}", True, (255, 255, 255))
                 self.screenplace(self.levelupfont, 300, 10)
-
+                if self.missileshow:
+                    self.counter = self.backup+1
+                else:
+                    self.counter += 1
+                    self.backup = self.counter
+                if self.counter % 20 == 0 and self.level >= 2:
+                    self.missile = Missile(random.randint(
+                        0, self.Screen_Width-30), 0, self.display, self.imgs.missileimg)
+                    self.missileshow = True
+                elif self.missileshow:
+                    self.showmissile()
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         pygame.quit()
@@ -152,7 +169,7 @@ class Game():
     def gameoverScreen(self):
         self.screenplace(self.imgs.goimg, 200, 30)
         self.screenplace(self.imgs.scoreshow.render(
-            f"Score : {self.score}", True, (255, 0, 228),(0, 0, 0)), 260, 300)
+            f"Score : {self.score}", True, (255, 0, 228), (0, 0, 0)), 260, 300)
         self.screenplace(self.imgs.infofont.render(
             "Press 1 For Main Menu", True, (255, 184, 38)), 180, 370)
         self.screenplace(self.imgs.infofont.render(
@@ -173,11 +190,11 @@ class Game():
 
     def levels(self):
         if self.level == 1:
-            self.enemy = 5
+            self.enemy = 8
         elif self.level == 2:
-            self.enemy = 7
-        elif self.level == 3:
             self.enemy = 10
+        elif self.level == 3:
+            self.enemy = 12
         elif self.level == 4:
             if len(self.enemylist) == 0:
                 self.gameover = True
@@ -211,9 +228,12 @@ class Game():
                 self.repeat = True
                 self.checking += self.enemyshow
             if self.repeat:
+                self.numpyx = numpy.linspace(
+                    0, self.Screen_Width-80, num=self.enemyshow, dtype=int)
                 for i in range(self.enemyshow):
-                    self.enemySurface = Enemy(self.imgs.enemyimg, random.randrange(
-                        0, self.Screen_Width-80, 3), random.randint(0, 20), self.display)
+                    self.enemyposx = random.randint(0, self.Screen_Width-80)
+                    self.enemySurface = Enemy(
+                        self.imgs.enemyimg, self.numpyx[i], 0, self.display)
                     self.enemylist.append(self.enemySurface)
                 self.repeat = False
         else:
@@ -247,6 +267,31 @@ class Game():
                 self.lastenemyxpos = rect.x
                 self.lastenemyypos = rect.y
                 self.enemytobeexploded = True
+            if self.missile.bulletcollide(bullets.bulletrect):
+                self.bulletlist.remove(bullets)
+                self.lastenemyxpos = self.missile.mrect.x
+                self.lastenemyypos = self.missile.mrect.y
+                self.enemytobeexploded = True
+                if self.missile.getcount >= 3:
+                    self.enemytobeexploded = True
+                    self.lastenemyxpos = self.missile.mrect.x
+                    self.lastenemyypos = self.missile.mrect.y
+                    self.imgs.explodesound.play(0)
+                    self.score += 50
+                    self.missileshow = False
+
+    def showmissile(self):
+        if self.missile.ypos >= self.Screen_Height-50:
+            self.missileshow = False
+        else:
+            self.missile.draw()
+            self.missile.move()
+            if self.missile.playercollide(self.playerrect):
+                self.missileshow = False
+                self.imgs.explodesound.play(0)
+                self.settinggameover()
+                self.tobeexploded = True
+                self.showexplosion(self.Player_x, self.Player_y)
 
     def showenemyexplode(self, x, y):
         if self.enemytobeexploded:

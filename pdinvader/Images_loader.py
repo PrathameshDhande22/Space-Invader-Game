@@ -54,6 +54,10 @@ class ImgLoader:
         self.goimg = pygame.image.load(Images.GAMEOVER)
         self.goimg = pygame.transform.scale(self.goimg, (300, 250))
 
+        # missile image
+        self.missileimg = pygame.image.load(Images.MISSILE)
+        self.missileimg = pygame.transform.scale(self.missileimg, (30, 90))
+
         # shoot sound loader
         self.shootsound = pygame.mixer.Sound(Images.SHOOTSOUND)
         self.shootsound.set_volume(0.3)

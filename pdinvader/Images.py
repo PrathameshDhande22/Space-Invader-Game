@@ -10,6 +10,7 @@ BULLET = "pdinvader/Images/bullet.png"
 SCOREBOARD = "pdinvader/Images/scoreboard.png"
 ENEMY = "pdinvader/Images/enemy.png"
 WINIMAGWE = "pdinvader/Images/winner.jpg"
+MISSILE = "pdinvader/Images/missile.png"
 
 # Fonts
 SCOREFONT = "pdinvader/Fonts/Akaya telivigala regular.ttf"

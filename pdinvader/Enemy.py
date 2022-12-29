@@ -7,7 +7,7 @@ class Enemy:
         self.display = display
         self.x = x
         self.y = y
-        self.velocity = 0.25
+        self.velocity = 0.2
 
     def draw(self):
         self.enemyrect = pygame.Rect(self.x+10, self.y+10, 60, 60)
