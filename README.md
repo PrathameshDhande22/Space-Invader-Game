@@ -1,7 +1,7 @@
 # Space Invader Game in Pygame
 ![Size](https://img.shields.io/github/repo-size/PrathameshDhande22/Space-Invader-Game?logo=github&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/PrathameshDhande22/Space-Invader-Game?logo=github&color=red&style=flat-square)
-[![Python](https://img.shields.io/badge/IDE-vscode-brightgreen?style=flat-square&color=violet)](https://code.visualstudio.com/)
+[![Python](https://img.shields.io/badge/IDE-vscode-brightgreen?style=flat-square&color=success)](https://code.visualstudio.com/)
 
 [![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f?logo=python&logoColor=white&style=for-the-badge)](https://www.python.org/)
 
