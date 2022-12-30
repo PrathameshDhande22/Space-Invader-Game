@@ -1,3 +1,4 @@
 from pdinvader import Game
+import threading
 
-g = Game()
+threading.Thread(target=Game).start()
