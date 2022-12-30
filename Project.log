@@ -1,0 +1,37 @@
+Day 1:
+Started the day by collecting images for the game. 
+These images will be used for the various in-game assets such as the player character, enemies, and background.
+Created a new folder to store all the project files. 
+This will keep the project organized and make it easier to work on.
+Installed pygame using pip (the Python package manager). 
+Pygame is a set of Python modules designed for creating video games.
+Went through some pygame tutorials to familiarize myself with the library and its functions.
+
+Day 2:
+Worked on creating the home screen for the game. 
+This included designing the layout, adding buttons for starting the game and accessing the options menu, and incorporating the collected images.
+Used pygame's drawing and event handling functions to implement the home screen.
+
+Day 3:
+Added the game screen to the project. 
+This screen will display the actual gameplay, including the player character and enemies.
+Created the player character and implemented the ability to move the character around the screen using the arrow keys.
+Added the ability for the player to fire bullets by pressing the spacebar. 
+Implemented the logic for spawning the bullets and having them move across the screen.
+
+Day 4:
+Added a score system to the game. 
+The player will earn points for defeating enemies and the score will be displayed on the screen.
+Added a life system to the game. 
+The player will start with a certain number of lives and will lose a life when they are hit by an enemy or their bullet misses an enemy. 
+If the player runs out of lives, the game will end.
+Implemented the logic for checking if the player has collided with an enemy. 
+If a collision is detected, the player will lose a life and the enemy will be removed from the screen.
+Added the ability for the player's bullets to collide with enemies. If a collision is detected, the enemy will be removed from the screen and the player will earn points.
+
+Day 5:
+Added sounds to the game to enhance the gameplay experience. 
+This included sounds for when the player fires a bullet, when an enemy is defeated, and when the player loses a life.
+After completing level 2, implemented the ability for the player to fire missiles. 
+Missiles are more powerful than bullets and can defeat multiple enemies at once.
+Wrote the necessary code to handle the spawning and movement of missiles, as well as the logic for checking collisions with enemies.
