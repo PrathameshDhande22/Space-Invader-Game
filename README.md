@@ -37,6 +37,9 @@ git clone https://github.com/PrathameshDhande22/Space-Invader-Game.git
 cd Space-Invader-Game
 python App.py
 ```
+## Output
+[Click Here](https://youtu.be/n32xoV24cCM) 👈 to See the Output 
+
 ## Credits
 The images used in the game are taken from:
 
