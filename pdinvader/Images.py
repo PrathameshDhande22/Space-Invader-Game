@@ -1,7 +1,7 @@
 
-INTROPNG = "pdinvader\Images\intro.jpg"
+INTROPNG = "pdinvader/Images/intro.jpg"
 ICON = "pdinvader/Images/icon.png"
-PLAYBTN = "pdinvader\Images\playbtn.png"
+PLAYBTN = "pdinvader/Images/playbtn.png"
 GAMEBG = "pdinvader/Images/back.jpg"
 SPACESHIP = "pdinvader/Images/space.png"
 GAMEOVER = "pdinvader/Images/gameover.png"
